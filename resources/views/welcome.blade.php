@@ -40,7 +40,7 @@
         </div>
         <div class="flex flex-col gap-y-4 mt-16 w-full text-white">
             <div>
-                Users in tenant_id 1: {{App\Models\User::count()}}
+                Users in tenant : {{App\Models\User::count()}}
             </div>
         </div>
         <div class="flex justify-center px-0 mt-16 sm:items-center sm:justify-between">

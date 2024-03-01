@@ -1,86 +1,72 @@
 @section('title', 'Create a new account')
 
 <div>
-    <div class="sm:mx-auto sm:w-full sm:max-w-md">
-        <a href="{{ route('home') }}">
-            <x-logo class="w-auto h-16 mx-auto text-indigo-600" />
-        </a>
-
-        <h2 class="mt-6 text-3xl font-extrabold text-center text-gray-900 leading-9">
-            Create a new account
-        </h2>
-
-        <p class="mt-2 text-sm text-center text-gray-600 leading-5 max-w">
-            Or
-            <a href="{{ route('login') }}" class="font-medium text-indigo-600 hover:text-indigo-500 focus:outline-none focus:underline transition ease-in-out duration-150">
-                sign in to your account
-            </a>
-        </p>
-    </div>
-
-    <div class="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
-        <div class="px-4 py-8 bg-white shadow sm:rounded-lg sm:px-10">
-            <form wire:submit.prevent="register">
+    <div class="flex min-h-full">
+        <div class="flex flex-1 flex-col justify-center px-4 py-12 sm:px-6 lg:flex-none lg:px-20 xl:px-24">
+            <div class="mx-auto w-full max-w-sm lg:w-96">
                 <div>
-                    <label for="name" class="block text-sm font-medium text-gray-700 leading-5">
-                        Name
-                    </label>
+                    <a href="/">
+                        <img class="h-8 w-auto" src="{{ asset('/images/lara-surveys.png') }}" alt="Lara Surveys">
+                    </a>
+                    <h2 class="mt-8 text-2xl font-bold leading-9 tracking-tight text-gray-900">Start a 14 day free trial</h2>
+                </div>
 
-                    <div class="mt-1 rounded-md shadow-sm">
-                        <input wire:model.lazy="name" id="name" type="text" required autofocus class="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md placeholder-gray-400 focus:outline-none focus:ring-blue focus:border-blue-300 transition duration-150 ease-in-out sm:text-sm sm:leading-5 @error('name') border-red-300 text-red-900 placeholder-red-300 focus:border-red-300 focus:ring-red @enderror" />
+                <div class="mt-10">
+                    <div>
+                        <form wire:submit.prevent="register" class="space-y-6">
+                            <div class="flex gap-x-4">
+                                <div>
+                                    <label for="firstName" class="block text-sm font-medium leading-6 text-gray-900">First name</label>
+                                    <div class="mt-2">
+                                        <input wire:model="firstName" id="firstName" name="firstName" type="text" required class="block w-full rounded-md border-0 py-1.5 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                                    </div>
+                                </div>
+                                <div>
+                                    <label for="lastName" class="block text-sm font-medium leading-6 text-gray-900">Last name</label>
+                                    <div class="mt-2">
+                                        <input wire:model="lastName" id="lastName" name="lastName" type="text" required class="block w-full rounded-md border-0 py-1.5 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                                    </div>
+                                </div>
+                            </div>
+                            <div>
+                                <label for="companyName" class="block text-sm font-medium leading-6 text-gray-900">Company name</label>
+                                <div class="mt-2">
+                                    <input wire:model="companyName" id="companyName" name="companyName" type="text" required class="block w-full rounded-md border-0 py-1.5 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                                </div>
+                            </div>
+                            <div>
+                                <label for="email" class="block text-sm font-medium leading-6 text-gray-900">Email address</label>
+                                <div class="mt-2">
+                                    <input wire:model="email" id="email" name="email" type="email" autocomplete="email" required class="block w-full rounded-md border-0 py-1.5 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                                </div>
+                            </div>
+
+                            <div>
+                                <label for="password" class="block text-sm font-medium leading-6 text-gray-900">Password</label>
+                                <div class="mt-2">
+                                    <input wire:model="password" id="password" name="password" type="password" autocomplete="current-password" required class="block w-full rounded-md border-0 py-1.5 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                                </div>
+                            </div>
+
+                            <div>
+                                <label for="passwordConfirmation" class="block text-sm font-medium leading-6 text-gray-900">Password confirmation</label>
+                                <div class="mt-2">
+                                    <input wire:model="passwordConfirmation" id="passwordConfirmation" name="passwordConfirmation" type="password" autocomplete="current-password" required class="block w-full rounded-md border-0 py-1.5 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                                </div>
+                            </div>
+
+
+                            <div>
+                                <button type="submit" class="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Register</button>
+                            </div>
+                        </form>
                     </div>
-
-                    @error('name')
-                        <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
-                    @enderror
                 </div>
-
-                <div class="mt-6">
-                    <label for="email" class="block text-sm font-medium text-gray-700 leading-5">
-                        Email address
-                    </label>
-
-                    <div class="mt-1 rounded-md shadow-sm">
-                        <input wire:model.lazy="email" id="email" type="email" required class="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md placeholder-gray-400 focus:outline-none focus:ring-blue focus:border-blue-300 transition duration-150 ease-in-out sm:text-sm sm:leading-5 @error('email') border-red-300 text-red-900 placeholder-red-300 focus:border-red-300 focus:ring-red @enderror" />
-                    </div>
-
-                    @error('email')
-                        <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
-                    @enderror
-                </div>
-
-                <div class="mt-6">
-                    <label for="password" class="block text-sm font-medium text-gray-700 leading-5">
-                        Password
-                    </label>
-
-                    <div class="mt-1 rounded-md shadow-sm">
-                        <input wire:model.lazy="password" id="password" type="password" required class="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md placeholder-gray-400 focus:outline-none focus:ring-blue focus:border-blue-300 transition duration-150 ease-in-out sm:text-sm sm:leading-5 @error('password') border-red-300 text-red-900 placeholder-red-300 focus:border-red-300 focus:ring-red @enderror" />
-                    </div>
-
-                    @error('password')
-                        <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
-                    @enderror
-                </div>
-
-                <div class="mt-6">
-                    <label for="password_confirmation" class="block text-sm font-medium text-gray-700 leading-5">
-                        Confirm Password
-                    </label>
-
-                    <div class="mt-1 rounded-md shadow-sm">
-                        <input wire:model.lazy="passwordConfirmation" id="password_confirmation" type="password" required class="block w-full px-3 py-2 placeholder-gray-400 border border-gray-300 appearance-none rounded-md focus:outline-none focus:ring-blue focus:border-blue-300 transition duration-150 ease-in-out sm:text-sm sm:leading-5" />
-                    </div>
-                </div>
-
-                <div class="mt-6">
-                    <span class="block w-full rounded-md shadow-sm">
-                        <button type="submit" class="flex justify-center w-full px-4 py-2 text-sm font-medium text-white bg-indigo-600 border border-transparent rounded-md hover:bg-indigo-500 focus:outline-none focus:border-indigo-700 focus:ring-indigo active:bg-indigo-700 transition duration-150 ease-in-out">
-                            Register
-                        </button>
-                    </span>
-                </div>
-            </form>
+            </div>
+        </div>
+        <div class="relative hidden w-0 flex-1 lg:block">
+            <img class="absolute inset-0 h-full w-full object-cover" src="https://images.unsplash.com/photo-1496917756835-20cb06e75b4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1908&q=80" alt="">
         </div>
     </div>
+
 </div>

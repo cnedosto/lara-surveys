@@ -41,11 +41,12 @@ class RegisterTest extends TestCase
         Event::fake();
 
         Livewire::test('auth.register')
-            ->set('name', 'Tall Stack')
+            ->set('firstName', 'Tall')
+            ->set('lastName', 'Stack')
+            ->set('companyName', 'TallStack Company')
             ->set('email', 'tallstack@example.com')
             ->set('password', 'password')
             ->set('passwordConfirmation', 'password')
-            ->set('role', 'admin')
             ->call('register')
             ->assertRedirect(route('home'));
 
@@ -59,9 +60,11 @@ class RegisterTest extends TestCase
     function name_is_required()
     {
         Livewire::test('auth.register')
-            ->set('name', '')
+            ->set('firstName', '')
+            ->set('lastName', '')
             ->call('register')
-            ->assertHasErrors(['name' => 'required']);
+            ->assertHasErrors(['firstName' => 'required'])
+            ->assertHasErrors(['lastName' => 'required']);
     }
 
     /** @test */

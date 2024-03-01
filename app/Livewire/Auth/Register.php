@@ -23,18 +23,22 @@ class Register extends Component
     /** @var string */
     public $passwordConfirmation = '';
 
+    public $role = 'admin';
+
     public function register()
     {
         $this->validate([
             'name' => ['required'],
             'email' => ['required', 'email', 'unique:users'],
             'password' => ['required', 'min:8', 'same:passwordConfirmation'],
+            'role' => ['required'],
         ]);
 
         $user = User::create([
             'email' => $this->email,
             'name' => $this->name,
             'password' => Hash::make($this->password),
+            'role' => $this->role,
         ]);
 
         event(new Registered($user));

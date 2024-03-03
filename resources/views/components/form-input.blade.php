@@ -11,7 +11,7 @@
 
 <div class="{{$attributes->get('class')}}">
     <label for="{{$identifier}}" class="block text-sm font-medium leading-6 {{$isLight === "true" ? 'text-white' : 'text-gray-900'}}">{{$label}}</label>
-    <div class="relative mt-2 rounded-md shadow-sm">
+    <div class="relative mt-2 rounded-md shadow-sm border border-gray-300">
         <input {{$attributes->whereStartsWith('wire:model')}} 
         id="{{$identifier}}" 
         name="{{$identifier}}" 

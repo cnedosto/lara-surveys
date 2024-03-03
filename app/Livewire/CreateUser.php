@@ -11,18 +11,16 @@ class CreateUser extends Component
     public $firstName = "";
     public $lastName = "";
     public $email = "";
-    public $photo;
     public $status = 1;
-    public $role = "";
+    public $role = "admin";
     public $password = "password";
 
     public function submit()
     {
-        $this->validate([
+        $validatedData = $this->validate([
             'firstName' => 'required|string',
             'lastName' => 'required|string',
             'email' => 'required|email|unique:users',
-            'status' => 'required|boolean',
             'role' => 'required|string',
         ]);
 
@@ -37,6 +35,8 @@ class CreateUser extends Component
         ]);
 
         $this->reset(['firstName', 'lastName', 'email', 'role']);
+
+        $this->dispatch('close-modal');
     }
 
     public function render()

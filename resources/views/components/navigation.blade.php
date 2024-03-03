@@ -1,9 +1,10 @@
     <header x-data="{open: false}" class="absolute inset-x-0 top-0 z-50">
         <nav class="mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8" aria-label="Global">
             <div class="flex lg:flex-1">
-                <a href="#" class="-m-1.5 p-1.5">
+                <a href="#" class="-m-1.5 p-1.5 flex items-end">
                     <span class="sr-only">Lara Surveys</span>
                     <img class="h-8 w-auto" src="{{ asset('/images/lara-surveys.png') }}" alt="Lara Surveys">
+                    <span class="ml-2 text-xl font-semibold leading-6 text-gray-900">Lara Surveys</span>
                 </a>
             </div>
             <div class="flex lg:hidden">
@@ -17,8 +18,8 @@
             <div class="hidden lg:flex lg:gap-x-12">
                 <a href="#" class="text-sm font-semibold leading-6 text-gray-900">Product</a>
                 <a href="#" class="text-sm font-semibold leading-6 text-gray-900">Features</a>
-                <a href="#" class="text-sm font-semibold leading-6 text-gray-900">Marketplace</a>
-                <a href="#" class="text-sm font-semibold leading-6 text-gray-900">Company</a>
+                <a href="#" class="text-sm font-semibold leading-6 text-gray-900">Clients</a>
+                <a href="#" class="text-sm font-semibold leading-6 text-gray-900">About us</a>
             </div>
             <div class="hidden lg:flex lg:flex-1 lg:justify-end">
                 <a href="/login" class="text-sm font-semibold leading-6 text-gray-900">Log in <span aria-hidden="true">&rarr;</span></a>

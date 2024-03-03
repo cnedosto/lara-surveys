@@ -12,7 +12,7 @@
     @endif
 
     <!-- Favicon -->
-    <link rel="shortcut icon" href="{{ url(asset('favicon.ico')) }}">
+    <link rel="shortcut icon" href="{{ url(asset('/images/lara-surveys.png')) }}">
 
     <!-- Styles -->
     <style>

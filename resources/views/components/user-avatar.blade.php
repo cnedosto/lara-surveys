@@ -1,5 +1,6 @@
 @props([
     'name',
+    'isSmall' => "false"
 ])
 
 @php
@@ -47,6 +48,6 @@
     }
 @endphp
 
-<div class="h-12 w-12 rounded-full {{$randomBgColor}} flex items-center justify-center">
-    <span class="text-xl">{{ strtoupper($initials) }}</span>
+<div class="{{$isSmall == 'true' ? 'h-8 w-8' : 'h-12 w-12'}} rounded-full {{$randomBgColor}} flex items-center justify-center">
+    <span class="{{$isSmall == 'true' ? 'text-sm' : 'text-xl'}}">{{ strtoupper($initials) }}</span>
 </div>

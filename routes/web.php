@@ -55,6 +55,7 @@ Route::middleware('auth')->group(function () {
         ->name('verification.verify');
 
     Route::view('/team', 'team')->name('team');
+    Route::view('/team/add-user', 'users.create')->name('users.create');
     Route::view('/surveys', 'surveys')->name('surveys');
     Route::view('/reports', 'reports')->name('reports');
 

@@ -21,6 +21,7 @@ return new class extends Migration
             $table->timestamps();
             $table->unsignedBigInteger('tenant_id')->nullable();
             $table->string('role');
+            $table->boolean('status')->default(1);
         });
     }
 

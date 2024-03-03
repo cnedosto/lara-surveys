@@ -2,14 +2,15 @@
 'type' => "text",
 'label' => "",
 'required' => "false",
+'isLight' => "false",
 ])
 
 @php
     $identifier = $attributes->whereStartsWith('wire:model')->first()
 @endphp
 
-<div>
-    <label for="{{$identifier}}" class="block text-sm font-medium leading-6 text-gray-900">{{$label}}</label>
+<div class="{{$attributes->get('class')}}">
+    <label for="{{$identifier}}" class="block text-sm font-medium leading-6 {{$isLight === "true" ? 'text-white' : 'text-gray-900'}}">{{$label}}</label>
     <div class="relative mt-2 rounded-md shadow-sm">
         <input {{$attributes->whereStartsWith('wire:model')}} 
         id="{{$identifier}}" 

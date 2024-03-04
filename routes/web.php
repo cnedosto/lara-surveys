@@ -54,11 +54,7 @@ Route::middleware('auth')->group(function () {
         ->middleware('signed')
         ->name('verification.verify');
 
-    Route::get('/team', function () {
-        $users = User::all();
-        return view('team', ['users' => $users]);
-    })->name('team');
-
+    Route::view('/team', 'team')->name('team');
     Route::view('/surveys', 'surveys')->name('surveys');
     Route::view('/reports', 'reports')->name('reports');
 

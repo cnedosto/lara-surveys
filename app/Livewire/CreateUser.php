@@ -34,6 +34,8 @@ class CreateUser extends Component
             'password' => Hash::make($this->password),
         ]);
 
+        $this->dispatch('userAdded');
+
         $this->reset(['firstName', 'lastName', 'email', 'role']);
 
         $this->dispatch('close-modal');

@@ -58,6 +58,6 @@ Route::middleware('auth')->group(function () {
     Route::view('/surveys', 'surveys')->name('surveys');
     Route::view('/reports', 'reports')->name('reports');
 
-    Route::post('logout', LogoutController::class)
+    Route::get('logout', LogoutController::class)
         ->name('logout');
 });

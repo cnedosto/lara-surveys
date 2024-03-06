@@ -11,6 +11,7 @@ use App\Livewire\Auth\Passwords\Email;
 use App\Livewire\Auth\Passwords\Reset;
 use App\Livewire\Auth\Register;
 use App\Livewire\Auth\Verify;
+use App\Livewire\SurveyList;
 use App\Models\User;
 use Illuminate\Support\Facades\Route;
 
@@ -55,7 +56,7 @@ Route::middleware('auth')->group(function () {
         ->middleware('signed')
         ->name('verification.verify');
 
-    Route::get('surveys/list', [SurveyController::class, 'list'])->name('surveys.list');
+    Route::get('surveys/list', SurveyList::class)->name('surveys.list');
     Route::post('surveys', [SurveyController::class, 'store'])->name('surveys.store');
 
     Route::view('/team', 'team')->name('team');

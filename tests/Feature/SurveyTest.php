@@ -2,11 +2,13 @@
 
 namespace Tests\Feature;
 
+use App\Livewire\SurveyList;
 use App\Models\User;
 use App\Models\Survey;
 use App\Models\Tenant;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Testing\Fluent\AssertableJson;
+use Livewire\Livewire;
 use Tests\TestCase;
 
 class SurveyTest extends TestCase
@@ -100,25 +102,19 @@ class SurveyTest extends TestCase
             'tenant_id' => $tenant1->id,
         ]);
 
-        $userTenant1 = User::factory()->create([
+        Livewire::actingAs(User::factory()->create([
             'tenant_id' => $tenant1->id,
             'role' => 'member',
-        ]);
-
-        $response = $this->actingAs($userTenant1)->json('GET', '/surveys/list');
-        $response->assertOk();
-        $jsonResponse = $response->json();
-
-        $containsCustomerFeedback = collect($jsonResponse)->contains(function ($item) {
-            return $item['name'] === 'Customer Feedback';
-        });
-
-        $this->assertTrue($containsCustomerFeedback);
+        ]))
+            ->test(SurveyList::class)
+            ->assertSee('Customer Feedback');
     }
 
     public function test_user_from_tenant2_cannot_see_surveys_from_tenant1()
     {
         $tenant1 = Tenant::factory()->create();
+        $tenant2 = Tenant::factory()->create();
+
         $adminTenant1 = User::factory()->create([
             'tenant_id' => $tenant1->id,
             'role' => 'admin',
@@ -140,20 +136,11 @@ class SurveyTest extends TestCase
             'tenant_id' => $tenant1->id,
         ]);
 
-        $tenant2 = Tenant::factory()->create();
-        $userTenant2 = User::factory()->create([
+        Livewire::actingAs(User::factory()->create([
             'tenant_id' => $tenant2->id,
             'role' => 'member',
-        ]);
-
-        $response = $this->actingAs($userTenant2)->json('GET', '/surveys/list');
-
-        $response->assertOk();
-        $jsonResponse = $response->json();
-        $containsCustomerFeedback = collect($jsonResponse)->contains(function ($item) {
-            return $item['name'] === 'Customer Feedback';
-        });
-
-        $this->assertFalse($containsCustomerFeedback);
+        ]))
+            ->test(SurveyList::class)
+            ->assertDontSee('Customer Feedback');
     }
 }

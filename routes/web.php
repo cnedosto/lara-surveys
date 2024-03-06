@@ -4,6 +4,7 @@ use App\Http\Controllers\Auth\EmailVerificationController;
 use App\Http\Controllers\Auth\LogoutController;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\SurveyController;
 use App\Livewire\Auth\Login;
 use App\Livewire\Auth\Passwords\Confirm;
 use App\Livewire\Auth\Passwords\Email;
@@ -53,6 +54,9 @@ Route::middleware('auth')->group(function () {
     Route::get('email/verify/{id}/{hash}', EmailVerificationController::class)
         ->middleware('signed')
         ->name('verification.verify');
+
+    Route::get('surveys/list', [SurveyController::class, 'list'])->name('surveys.list');
+    Route::post('surveys', [SurveyController::class, 'store'])->name('surveys.store');
 
     Route::view('/team', 'team')->name('team');
     Route::view('/surveys', 'surveys')->name('surveys');

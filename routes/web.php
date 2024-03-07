@@ -56,9 +56,6 @@ Route::middleware('auth')->group(function () {
         ->middleware('signed')
         ->name('verification.verify');
 
-    Route::get('surveys/list', SurveyList::class)->name('surveys.list');
-    Route::post('surveys', [SurveyController::class, 'store'])->name('surveys.store');
-
     Route::view('/team', 'team')->name('team');
     Route::view('/surveys', 'surveys')->name('surveys');
     Route::view('/reports', 'reports')->name('reports');

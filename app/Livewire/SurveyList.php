@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Log;
 class SurveyList extends Component
 {
     public $surveys;
+    protected $listeners = ['surveyAdded' => 'mount'];
 
     public function mount()
     {

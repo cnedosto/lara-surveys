@@ -38,11 +38,21 @@ class CreateSurvey extends Component
             'name' => $this->name,
         ]);
 
-        foreach ($this->questions as $question) {
-            $survey->questions()->create([
-                'question_text' => $question['question_text'],
+
+        foreach ($this->questions as $questions) {
+            $question = $survey->questions()->create([
+                'question_text' => $questions['question_text'],
             ]);
+
+            $predefinedAnswers = ['Very unlikely', 'Unlikely', 'Likely', 'Very likely'];
+
+            foreach ($predefinedAnswers as $answerText) {
+                $question->answerOptions()->create([
+                    'option_text' => $answerText,
+                ]);
+            }
         }
+
 
 
         $this->dispatch('surveyAdded');

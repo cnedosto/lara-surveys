@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Auth;
+
 class HomeController extends Controller
 {
 
@@ -10,7 +12,16 @@ class HomeController extends Controller
         if (!auth()->check()) {
             return view('welcome');
         } else {
-            return view('dashboard');
+            if (auth()->user()->isAdmin) {
+                return view('dashboard');
+            } else {
+                return redirect()->route('surveys');
+            }
         }
+    }
+
+    public function getIsAdminProperty()
+    {
+        return Auth::user()->role === 'admin';
     }
 }

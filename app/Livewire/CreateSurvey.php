@@ -61,11 +61,6 @@ class CreateSurvey extends Component
         $this->questions = array_values($this->questions);
     }
 
-    public function getIsAdminProperty()
-    {
-        return Auth::user()->role === 'admin';
-    }
-
     public function render()
     {
         return view('livewire.create-survey');

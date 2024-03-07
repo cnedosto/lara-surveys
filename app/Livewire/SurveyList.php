@@ -13,7 +13,9 @@ class SurveyList extends Component
 
     public function mount()
     {
-        $this->surveys = Survey::where('tenant_id', auth()->user()->tenant_id)->get();
+        $this->surveys = Survey::where('tenant_id', auth()->user()->tenant_id)
+            ->withCount('questions')
+            ->get();
     }
 
     public function render()

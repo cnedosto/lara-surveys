@@ -12,7 +12,7 @@ class HomeController extends Controller
         if (!auth()->check()) {
             return view('welcome');
         } else {
-            if (auth()->user()->isAdmin) {
+            if (auth()->user()->role == 'admin') {
                 return view('dashboard');
             } else {
                 return redirect()->route('surveys');

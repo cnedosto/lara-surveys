@@ -4,12 +4,12 @@ namespace App\Livewire;
 
 use Livewire\Component;
 use App\Models\Survey;
+use App\Models\SurveyQuestion;
 use Illuminate\Support\Facades\Log;
 
 class SurveyList extends Component
 {
     public $surveys;
-    protected $listeners = ['surveyAdded' => 'mount'];
 
     public function mount()
     {

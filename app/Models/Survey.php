@@ -33,6 +33,37 @@ class Survey extends Model
         return $answeredUsers >= $totalUsers ? 'answered' : 'ongoing';
     }
 
+    public function answeredRate()
+    {
+        $totalUsers = User::where('tenant_id', $this->tenant_id)->count();
+        $answeredUsers = $this->participants();
+
+        if ($totalUsers === 0) {
+            return 0;
+        }
+
+        $answeredRate = ($answeredUsers / $totalUsers) * 100;
+
+        return $answeredRate;
+    }
+
+    public static function averageAnsweredRate()
+    {
+        $surveys = Survey::all();
+        $totalRate = 0;
+        $surveyCount = $surveys->count();
+
+        foreach ($surveys as $survey) {
+            $totalRate += $survey->answeredRate();
+        }
+
+        if ($surveyCount === 0) {
+            return 0;
+        }
+        return round($totalRate / $surveyCount, 2);
+    }
+
+
     protected static function booted(): void
     {
         static::addGlobalScope(new TenantScope);

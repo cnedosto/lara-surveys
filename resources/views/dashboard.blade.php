@@ -31,19 +31,19 @@
         <div class="border-t border-white/5 py-6 px-4 sm:px-6 lg:px-8">
         <p class="text-sm font-medium leading-6 text-gray-400">Team size</p>
         <p class="mt-2 flex items-baseline gap-x-2">
-            <span class="text-4xl font-semibold tracking-tight text-white">10</span>
+            <span class="text-4xl font-semibold tracking-tight text-white">{{$teamSize}}</span>
         </p>
         </div>
         <div class="border-t border-white/5 py-6 px-4 sm:px-6 lg:px-8 sm:border-l">
         <p class="text-sm font-medium leading-6 text-gray-400">Average surveys answered</p>
         <p class="mt-2 flex items-baseline gap-x-2">
-            <span class="text-4xl font-semibold tracking-tight text-white">50 %</span>
+            <span class="text-4xl font-semibold tracking-tight text-white">{{$averageSurveysAnswered}} %</span>
         </p>
         </div>
         <div class="border-t border-white/5 py-6 px-4 sm:px-6 lg:px-8 lg:border-l">
         <p class="text-sm font-medium leading-6 text-gray-400">Number of surveys</p>
         <p class="mt-2 flex items-baseline gap-x-2">
-            <span class="text-4xl font-semibold tracking-tight text-white">4</span>
+            <span class="text-4xl font-semibold tracking-tight text-white">{{$numberOfSurveys}}</span>
         </p>
         </div>
     </div>

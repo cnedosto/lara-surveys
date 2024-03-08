@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Survey;
+use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
@@ -13,7 +15,11 @@ class HomeController extends Controller
             return view('welcome');
         } else {
             if (auth()->user()->role == 'admin') {
-                return view('dashboard');
+                $teamSize = User::count();
+                $averageSurveysAnswered = Survey::averageAnsweredRate();
+                $numberOfSurveys = Survey::count();
+
+                return view('dashboard', compact('teamSize', 'averageSurveysAnswered', 'numberOfSurveys'));
             } else {
                 return redirect()->route('surveys');
             }

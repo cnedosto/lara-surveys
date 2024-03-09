@@ -7,7 +7,7 @@ use Livewire\Component;
 
 class TeamMembers extends Component
 {
-    protected $listeners = ['userAdded' => 'render'];
+    protected $listeners = ['userAdded' => 'render', 'userEdited' => 'render'];
 
     public function render()
     {

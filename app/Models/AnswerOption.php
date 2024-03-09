@@ -12,4 +12,9 @@ class AnswerOption extends Model
     {
         return $this->belongsTo(SurveyQuestion::class, 'question_id');
     }
+
+    public function userAnswers()
+    {
+        return $this->hasMany(UserAnswer::class, 'answer_option_id');
+    }
 }

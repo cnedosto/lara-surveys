@@ -19,7 +19,12 @@
         </div>
 
         <div class="mt-8 border-t border-gray-200 pt-5">
-            <div class="flex justify-end mt-4">
+            <div class="flex justify-between mt-4">
+                <span class="inline-flex rounded-md shadow-sm">
+                    <button wire:click="deleteSurvey; openUpdateSurveyModal = false" type="button" class="inline-flex justify-center py-2 px-4 border border-transparent text-sm leading-5 font-medium rounded-md text-white bg-red-600 hover:bg-red-500 focus:outline-none focus:border-red-700 focus:shadow-outline-red active:bg-red-700 transition duration-150 ease-in-out">
+                        Delete Survey
+                    </button>
+                </span>
                 <span class="inline-flex rounded-md shadow-sm">
                     <button type="submit" class="inline-flex justify-center py-2 px-4 border border-transparent text-sm leading-5 font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-500 focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo active:bg-indigo-700 transition duration-150 ease-in-out">
                         Update Survey

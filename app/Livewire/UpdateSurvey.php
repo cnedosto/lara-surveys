@@ -83,6 +83,16 @@ class UpdateSurvey extends Component
         $this->questions = array_values($this->questions);
     }
 
+    public function deleteSurvey()
+    {
+        if (auth()->user() && auth()->user()->role !== 'admin') {
+            return;
+        }
+        Survey::with('questions')->findOrFail($this->surveyId)->delete();
+
+        $this->dispatch('surveyUpdated');
+    }
+
 
     public function render()
     {
